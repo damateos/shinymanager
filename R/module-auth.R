@@ -55,7 +55,7 @@ auth_ui <- function(id, status = "primary", tags_top = NULL,
       tags$br(), tags$div(style = "height: 70px;"), tags$br(),
       fluidRow(
         column(
-          width = 4, offset = 5,
+          width = 4, offset = 6,
           tags$div(
             class = paste0("panel panel-", status),
             tags$div(
@@ -87,7 +87,7 @@ auth_ui <- function(id, status = "primary", tags_top = NULL,
                 }
                 tags$div(style = style,
                          fluidRow(
-                           column(width = 4, offset = 4, uiOutput(ns("label_language"))),
+                           column(width = 4, offset = 6, uiOutput(ns("label_language"))),
                            column(4,
                                   tags$div(
                                     style = "text-align: left; font-size: 12px;",
@@ -103,11 +103,11 @@ auth_ui <- function(id, status = "primary", tags_top = NULL,
                          )
                 )
               },
-              tags$div(
-                style = "text-align: center;",
-                if (!is.null(tags_top)) tags_top,
-                tags$h3(lan$get("Please authenticate"), id = ns("shinymanager-auth-head"))
-              ),
+              # tags$div(
+              #   style = "text-align: center;",
+              #   if (!is.null(tags_top)) tags_top,
+              #   tags$h3(lan$get("Please authenticate"), id = ns("shinymanager-auth-head"))
+              # ),
               tags$br(),
               textInput(
                 inputId = ns("user_id"),
