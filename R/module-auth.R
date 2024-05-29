@@ -55,7 +55,7 @@ auth_ui <- function(id, status = "primary", tags_top = NULL,
       tags$br(), tags$div(style = "height: 70px;"), tags$br(),
       fluidRow(
         column(
-          width = 4, offset = 4,
+          width = 4, offset = 5,
           tags$div(
             class = paste0("panel panel-", status),
             tags$div(
@@ -111,12 +111,14 @@ auth_ui <- function(id, status = "primary", tags_top = NULL,
               tags$br(),
               textInput(
                 inputId = ns("user_id"),
-                label = lan$get("Username:"),
+                # label = lan$get("Username:"),
+                placeholder = "noname@detektia.com",
                 width = "100%"
               ),
               passwordInput(
                 inputId = ns("user_pwd"),
-                label = lan$get("Password:"),
+                # label = lan$get("Password:"),
+                placeholder = "noname@detektia.com",
                 width = "100%"
               ),
               tags$br(),
