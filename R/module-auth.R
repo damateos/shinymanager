@@ -54,70 +54,74 @@ auth_ui <- function(id, status = "primary", tags_top = NULL,
       id = ns("auth-mod"), class = "panel-auth",
       tags$br(), tags$div(style = "height: 70px;"), tags$br(),
       fluidRow(
+        column(3,
+               class = "logo-detektia",
+               offset = 1),
+        
         column(
-          width = 4, offset = 6,
+          width = 4, offset = 2,
           tags$div(
             class = paste0("panel panel-", status),
             tags$div(
               class = "panel-body",
-              {
-                
-                choices = lan$get_language()
-                lan_registered <- lan$get_language_registered()
-                if(is.logical(choose_language) && choose_language){
-                  choices = unname(lan$get_language_registered())
-                } else if(is.character(choose_language)){
-                  choices = unique(c(intersect(choose_language, unname(lan$get_language_registered())), lan$get_language()))
-                }
-                
-                names(choices) <- choices
-                for(i in 1:length(choices)){
-                  ind <- which(lan_registered %in% choices[i])
-                  if(length(ind) > 0){
-                    names(choices)[i] <- names(lan_registered)[ind]
-                  }
-                }
-                selected = ifelse(lan$get_language() %in% choices,
-                                  lan$get_language(),
-                                  choices[1])
-                if(length(choices) == 1){
-                  style = "display:none"
-                } else {
-                  style = "margin-bottom:-50px;"
-                }
-                tags$div(style = style,
-                         fluidRow(
-                           column(width = 4, offset = 6, uiOutput(ns("label_language"))),
-                           column(4,
-                                  tags$div(
-                                    style = "text-align: left; font-size: 12px;",
-                                    selectInput(
-                                      inputId = ns("language"),
-                                      label = NULL,
-                                      choices = choices,
-                                      selected = selected,
-                                      width = "100%"
-                                    )
-                                  )
-                           )
-                         )
-                )
-              },
+              # {
+              #   
+              #   choices = lan$get_language()
+              #   lan_registered <- lan$get_language_registered()
+              #   if(is.logical(choose_language) && choose_language){
+              #     choices = unname(lan$get_language_registered())
+              #   } else if(is.character(choose_language)){
+              #     choices = unique(c(intersect(choose_language, unname(lan$get_language_registered())), lan$get_language()))
+              #   }
+              #   
+              #   names(choices) <- choices
+              #   for(i in 1:length(choices)){
+              #     ind <- which(lan_registered %in% choices[i])
+              #     if(length(ind) > 0){
+              #       names(choices)[i] <- names(lan_registered)[ind]
+              #     }
+              #   }
+              #   selected = ifelse(lan$get_language() %in% choices,
+              #                     lan$get_language(),
+              #                     choices[1])
+              #   if(length(choices) == 1){
+              #     style = "display:none"
+              #   } else {
+              #     style = "margin-bottom:-50px;"
+              #   }
+              #   tags$div(style = style,
+              #            fluidRow(
+              #              column(width = 4, offset = 4, uiOutput(ns("label_language"))),
+              #              column(4,
+              #                     tags$div(
+              #                       style = "text-align: left; font-size: 12px;",
+              #                       selectInput(
+              #                         inputId = ns("language"),
+              #                         label = NULL,
+              #                         choices = choices,
+              #                         selected = selected,
+              #                         width = "100%"
+              #                       )
+              #                     )
+              #              )
+              #            )
+              #   )
+              # },
               # tags$div(
               #   style = "text-align: center;",
               #   if (!is.null(tags_top)) tags_top,
               #   tags$h3(lan$get("Please authenticate"), id = ns("shinymanager-auth-head"))
               # ),
-              tags$br(),
+              # tags$br(),
               textInput(
                 inputId = ns("user_id"),
-                # label = lan$get("Username:"),
+                label = NULL,
                 placeholder = "noname@detektia.com",
                 width = "100%"
               ),
               passwordInput(
                 inputId = ns("user_pwd"),
-                # label = lan$get("Password:"),
+                label = NULL,
                 placeholder = "noname@detektia.com",
                 width = "100%"
               ),
@@ -127,7 +131,7 @@ auth_ui <- function(id, status = "primary", tags_top = NULL,
                 actionButton(
                   inputId = ns("go_auth"),
                   label = lan$get("Login"),
-                  width = "100%",
+                  width = "33%",
                   class = paste0("btn-", status)
                 ),
                 tags$br(), tags$br()
