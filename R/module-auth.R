@@ -244,7 +244,7 @@ auth_server <- function(input, output, session,
       selector = jns("container-btn-ok"),
       ui = tags$div(
         id = ns("spinner_msg_ok"),
-        img(src = "shinymanager/1497.gif", style = "height:30px;"), 
+        img(src = "shinymanager/flechas.gif", style = "height:30px;"), 
         align = "center"
       ),
       immediate = TRUE 
