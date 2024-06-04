@@ -116,13 +116,13 @@ auth_ui <- function(id, status = "primary", tags_top = NULL,
               textInput(
                 inputId = ns("user_id"),
                 label = NULL,
-                placeholder = "noname@detektia.com",
+                placeholder = "username",
                 width = "100%"
               ),
               passwordInput(
                 inputId = ns("user_pwd"),
                 label = NULL,
-                placeholder = "noname@detektia.com",
+                placeholder = "password",
                 width = "100%"
               ),
               tags$br(),
